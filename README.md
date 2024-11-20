@@ -3,12 +3,12 @@
 
 ``` 
  - Sistema operacional compatível com DOCKER Linux e Windows.
- - docker e docker-compose
+ - Instalar docker e docker-compose
     -> Windows: https://www.docker.com/products/docker-desktop/
     -> Linux: https://docs.docker.com/engine/install/ubuntu/
  - Git
  - Noções básicas de Docker, Git, Bash , Linux e Windows
- - Gerenciador de banco de dados  Navcat, DBeaver ou Workbench
+ - Gerenciador de banco de dados  Navcat, DBeaver ou Workbench (SGBD)
 
 ```
 
@@ -31,10 +31,22 @@
 
 * clone o repositorio
 ``` 
-    git clone https://github.com/dyego-alves/sl2.git
+    git clone https://github.com/dyegoalves/l2jrevMobiusInterludeC6.git
+    
 ```
-      
-## 2 - INICIALIZACAO DO SERVE COM DOCKER
+
+## 2 - DESCOMPRIME O ARQUIVO ZIP
+
+ * No linux use o comando abaixo
+``` 
+    unzip l2jrevMobiusInterlude.zip
+```
+ * No windows use o comando abaixo
+``` 
+    use winrar ou um programa de descompactar de sua preferência para descompactar o arquivo    
+```
+
+## 3 - INICIALIZACAO DO SERVE COM DOCKER
 
 
 #### Comando de incializacao do servidor com docker
@@ -48,9 +60,37 @@ Caso precise subir separados os container, execute os comandos abaixo:
 
     docker-compose up --build -d sl2
 
+
+
+
 ----
 
-## 3 - COMANDO PRA CONTAINER DE BASE DE DADOS
+## 4 - SAIDA ESPERADA PARA SUCESSO DO SERVIDOR NO TERMINAL
+
+* LOGIN SERVER OK
+
+![alt text](imgs/image-1.png)
+
+* GAME SERVER OK 
+
+![alt text](imgs/image-2.png)
+
+
+## 5 - LOGS DO SERVIDOR EM DOCKER CONTAINER 
+* COMANDS DE LOGS SERVIDOR (sl2) E BANCO DE DADOS (db) no terminal  
+
+``` 
+
+
+    docker-compose logs -f  sl2 
+
+    docker-compose logs -f  db
+
+``` 
+
+----
+
+## :: COMANDO PARA SERVICE CONTAINER DA BASE DE DADOS (OPCIONAL)
 
 #### Entre no container db com comando abaixo 
     docker-compose exec db bash
@@ -58,31 +98,18 @@ Caso precise subir separados os container, execute os comandos abaixo:
 #### De permisao para arquivo
     chmod 600 /root/.my.cnf
 
-#### Entrea no diretorio onde se encontra o arquivo .sql
+#### Entre no diretorio onde se encontra o arquivo database.sql
     cd /docker-entrypoint-initdb.d
 
 #### Executar o comando abaixo para realizar o restore da base de dados criada para projeto l2 ex: l2jteste
     mysql {NOME DO BANCO} < database.sql
 
-#### Executar o comando abaixo para realizar o backup da base de dados criado para servidor de l2, ou nome definido na instalacao do server
+#### Executar o comando abaixo para realizar o backup (dump) da base de dados criado para servidor de l2jteste, ou nome definido na instalacao do server
     mysqldump {NOME DO BANCO} > database.sql
-
-
----
-
-
-## 5 - LOGS DO SERVIDOR EM DOCKER CONTAINER 
-
-* Dentro da pasta que encontra-se o docker-compose, execute o comando abaixo para saber alguns logs dos containers.
-
-
-```
-docker-compose logs -f 
-```
 
 
 --- 
 
 #### Zip controle de versão do code server para envio ao desenvolvedor
 
-zip -r servidor_interlude.zip * -x "sl2/game/log/*" "sl2/login/log/*" "mysql/*"
+./create_zip.sh
