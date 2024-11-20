@@ -2,12 +2,12 @@
 ## REQUIREMENTS
 
 ``` 
- - Sistema operacional compatível com DOCKER Linux e Windows.
+ - Sistema operacional compatível com DOCKER OS Linux, Windows ou Mac(Não testado).
  - Instalar docker e docker-compose
     -> Windows: https://www.docker.com/products/docker-desktop/
     -> Linux: https://docs.docker.com/engine/install/ubuntu/
  - Git
- - Noções básicas de Docker, Git, Bash , Linux e Windows
+ - Noções básicas de Docker, Git, Bash , Linux ou Windows (Terminal)
  - Gerenciador de banco de dados  Navcat, DBeaver ou Workbench (SGBD)
 
 ```
@@ -22,16 +22,12 @@
 ## 1 - CLONAR O REPOSITORIO
 
 ##### Estruture e Organize
-* crie uma pasta para salvar os arquivos do repositorio e entre nela em seu sistema operacional
-
-``` 
-    mkdir servidorl2
-    cd servidorl2
-```  
 
 * clone o repositorio
 ``` 
     git clone https://github.com/dyegoalves/l2jrevMobiusInterludeC6.git
+
+    cd l2jrevMobiusInterludeC6
     
 ```
 
@@ -39,7 +35,7 @@
 
  * No linux use o comando abaixo
 ``` 
-    unzip l2jrevMobiusInterlude.zip
+    unzip sl2jrevMobiusInterlude.zip
 ```
  * No windows use o comando abaixo
 ``` 

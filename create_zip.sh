@@ -1,27 +1,25 @@
 #!/bin/bash
 
-echo "Excluindo arquivos zip antigos..."
+echo "Excluindo logs"
+rm -rf sl2/game/log/*
+rm -rf sl2/login/log/*
 
-rm -rf l2jrevMobiusInterlude.zip
-
+echo "ZIP processando..."
 # Nome do arquivo ZIP
-ZIP_NAME="l2jrevMobiusInterlude.zip"
+ZIP_NAME="sl2jrevMobiusInterlude.zip"
 
-# Arquivos e diretórios a serem incluídos
-INCLUDES=("sl2" "Dockerfile" "README.md" "docker-compose.yml")
-
-# Diretórios e arquivos a serem excluídos
-EXCLUDES=(".git" "mysql" "sl2/game/log/*" "sl2/login/log/*")
-
-# Verifica se o arquivo ZIP já existe e o remove
+# Remove o ZIP antigo, se existir
 if [ -f "$ZIP_NAME" ]; then
     echo "Removendo arquivo ZIP existente: $ZIP_NAME"
     rm "$ZIP_NAME"
 fi
 
+# Diretórios e arquivos a serem excluídos do zip (compactacao)
+EXCLUDES=(".git/*" "mysql/*" "sl2/game/log/*" "sl2/login/log/*")
+
 # Cria o arquivo ZIP com exclusões
-echo "Criando o arquivo ZIP: $ZIP_NAME"
-zip -r "$ZIP_NAME" "${INCLUDES[@]}" $(printf " -x %s" "${EXCLUDES[@]}")
+echo "Criando o arquivo ZIP apenas para a pasta 'sl2': $ZIP_NAME"
+zip -r "$ZIP_NAME" "sl2" $(printf " -x '%s'" "${EXCLUDES[@]}")
 
 # Verifica se o ZIP foi criado com sucesso
 if [ $? -eq 0 ]; then
