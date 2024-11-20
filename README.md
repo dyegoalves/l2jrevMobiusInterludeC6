@@ -31,6 +31,7 @@
     
 ```
 
+
 ## 2 - DESCOMPRIME O ARQUIVO ZIP
 
  * No linux use o comando abaixo
@@ -41,6 +42,10 @@
 ``` 
     use winrar ou um programa de descompactar de sua preferência para descompactar o arquivo    
 ```
+
+* Estrutura do projeto:
+
+![alt text](imgs/project-structure.png)
 
 ## 3 - INICIALIZACAO DO SERVE COM DOCKER
 
